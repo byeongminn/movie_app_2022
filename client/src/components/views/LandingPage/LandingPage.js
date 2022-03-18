@@ -34,13 +34,12 @@ function LandingPage() {
 
     return (
         <div style={{ width: '100%', margin: '0' }}>
-            
             {/* Main Image */}
             {
                 mainMovieImage &&
                 <MainImage
                     image={`${IMAGE_BASE_URL}w1280${mainMovieImage.backdrop_path}`}
-                    title={mainMovieImage.original_title}
+                    title={mainMovieImage.title}
                     text={mainMovieImage.overview}
                 />
             }
@@ -55,6 +54,7 @@ function LandingPage() {
                         movies && movies.map((movie, index) => (
                             <React.Fragment key={index}>
                                 <GridCards
+                                    landingPage
                                     image={movie.poster_path ?
                                         `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                                     movieId={movie.id}
