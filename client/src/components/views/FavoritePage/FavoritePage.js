@@ -53,7 +53,7 @@ function FavoritePage() {
         return (
             <tr key={index}>
                 <Popover content={content} title={`${favorite.movieTitle}`}>
-                    <td>{favorite.movieTitle}</td>
+                    <td><a href={`/movie/${favorite.movieId}`}>{favorite.movieTitle}</a></td>
                 </Popover>
                 <td>{favorite.movieRunTime} mins</td>
                 <td><button onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}>Remove</button></td>
