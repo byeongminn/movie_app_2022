@@ -50,7 +50,7 @@ function MovieDetail(props) {
 
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     {
-                        movie &&
+                        movie && props.user.userData &&
                         <Favorite movieInfo={movie} movieId={movieId} userFrom={localStorage.getItem('userId')} isAuth={props.user.userData.isAuth} />
                     }
                 </div>
