@@ -35,12 +35,16 @@ function Favorite(props) {
                 if (response.data.success) {
                     setFavorited(response.data.favorited);
                 } else {
-                    alert('정보를 가져오는데 실패했습니다.');
+                    if (props.isAuth) {
+                        alert('정보를 가져오는데 실패했습니다.');
+                    }
                 }
             })
     }, [])
 
     const onClickFavorite = () => {
+        if (!props.isAuth) return alert('로그인이 필요한 서비스입니다.');
+
         if (favorited) {
             axios.post('/api/favorite/removeFromFavorite', variables)
                 .then(response => {
