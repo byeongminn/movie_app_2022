@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { API_KEY, API_URL, IMAGE_BASE_URL } from '../../Config';
 import GridCards from '../commons/GridCards';
 import MainImage from '../LandingPage/Sections/MainImage';
+import Favorite from './Sections/Favorite';
 import MovieInfo from './Sections/MovieInfo';
 
 function MovieDetail(props) {
@@ -24,7 +25,6 @@ function MovieDetail(props) {
         fetch(endpointCrew)
             .then(response => response.json())
             .then(response => {
-                console.log(response.cast);
                 setCasts(response.cast);
             });
     }, [])
@@ -47,6 +47,13 @@ function MovieDetail(props) {
 
             {/* Body */}
             <div style={{ width: '85%', margin: '1rem auto' }}>
+
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    {
+                        movie &&
+                        <Favorite movieInfo={movie} movieId={movieId} userFrom={localStorage.getItem('userId')} />
+                    }
+                </div>
                 
                 {/* Movie Info */}
                 {
